@@ -13,6 +13,8 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.firebase.messaging.FirebaseMessaging;
+
 public class MainActivity extends AppCompatActivity {
     private static final int TIME_DELAY = 2000;
     private static long back_pressed;
@@ -23,9 +25,10 @@ public class MainActivity extends AppCompatActivity {
     ViewTreeObserver.OnScrollChangedListener mOnScrollChangedListener;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FirebaseMessaging.getInstance().subscribeToTopic("all");
         final String url = "https://hmpnews.in/";
         swipeRefreshLayout = findViewById(R.id.mySwipeControl);
         webView = findViewById(R.id.detailView);
@@ -40,14 +43,8 @@ public class MainActivity extends AppCompatActivity {
             //Share link on WhatsApp
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                //Open Article in App
-                if(url.contains("hmpnews.in")) {
-                    webView.loadUrl(url);
-                }
-                else {
-                    Intent i = new Intent(Intent.ACTION_VIEW,Uri.parse(url));
-                    startActivity(i);
-                }
+
+
                 //Share on WhatsApp
                 if (url.startsWith("whatsapp://send")) {
                     final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
@@ -68,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
     });
         webView.loadUrl(url);
         // Scroll down to reload
-
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

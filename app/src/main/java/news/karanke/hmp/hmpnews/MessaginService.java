@@ -16,8 +16,8 @@ import com.google.firebase.messaging.RemoteMessage;
 public class MessaginService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-
         showNotification(remoteMessage.getNotification().getBody());
+
     }
 
     public void showNotification(String message) {

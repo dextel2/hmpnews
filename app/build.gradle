@@ -6,8 +6,8 @@ android {
         applicationId "news.karanke.hmp.hmpnews"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 6
-        versionName "6"
+        versionCode 7
+        versionName "7"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
