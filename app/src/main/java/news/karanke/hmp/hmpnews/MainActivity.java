@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
                 webView.setVisibility(View.VISIBLE);
                 swipeRefreshLayout.setRefreshing(false);
             }
-
     });
 
 
