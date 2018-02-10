@@ -43,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
             //Share link on WhatsApp
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
-
                 //Share on WhatsApp
                 if (url.startsWith("whatsapp://send")) {
                     final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
@@ -63,7 +61,19 @@ public class MainActivity extends AppCompatActivity {
             }
 
     });
-        webView.loadUrl(url);
+
+
+        Intent intentx = getIntent();
+        String link = intentx.getDataString();
+
+        if(link == null) {
+            webView.loadUrl(url);
+        }
+        else {
+            webView.loadUrl(link);
+        }
+
+
         // Scroll down to reload
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
