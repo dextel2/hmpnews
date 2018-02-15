@@ -1,3 +1,5 @@
+# Contribution Guide
+
 ## Getting Started
 
 * Fork the repository on GitHub (It's that easy)
