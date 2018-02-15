@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
             }
     });
 
-
         Intent intentx = getIntent();
         String link = intentx.getDataString();
 
@@ -71,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
         else {
             webView.loadUrl(link);
         }
-
 
         // Scroll down to reload
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -114,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
             public void onScrollChanged() {
                 if(webView.getScrollY() == 0){
                     swipeRefreshLayout.setEnabled(true);
-
                 }
                 else {
                     swipeRefreshLayout.setEnabled(false);
